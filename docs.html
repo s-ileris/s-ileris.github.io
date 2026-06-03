@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rm -rf bg — Figma Plugin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0e0e0e;
+        --fg: #d4d4d4;
+        --fg-muted: #555;
+        --fg-dim: #333;
+        --accent: #d4d4d4;
+        --mono: "Geist Mono", monospace;
+        --serif: "EB Garamond", Georgia, serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background: var(--bg);
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--serif);
+        font-size: 18px;
+        line-height: 1.75;
+        max-width: 580px;
+        margin: 0 auto;
+        padding: 80px 24px 120px;
+      }
+
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 72px;
+      }
+
+      .site-name {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--fg-muted);
+        letter-spacing: 0.02em;
+      }
+
+      nav {
+        display: flex;
+        gap: 24px;
+      }
+
+      nav a {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--fg-muted);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: color 150ms;
+      }
+
+      nav a:hover {
+        color: var(--fg);
+      }
+
+      h1 {
+        font-family: var(--serif);
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.25;
+        color: var(--fg);
+        margin-bottom: 10px;
+        letter-spacing: -0.01em;
+      }
+
+      .tagline {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--fg-muted);
+        margin-bottom: 56px;
+        letter-spacing: 0.02em;
+      }
+
+      section {
+        margin-bottom: 48px;
+      }
+
+      h2 {
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--fg-dim);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      p {
+        color: var(--fg);
+        margin-bottom: 16px;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: var(--fg);
+        text-decoration-color: var(--fg-dim);
+        text-underline-offset: 3px;
+        transition: text-decoration-color 150ms;
+      }
+
+      a:hover {
+        text-decoration-color: var(--fg);
+      }
+
+      code {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: #888;
+        background: #1a1a1a;
+        padding: 1px 6px;
+        border-radius: 3px;
+      }
+
+      .steps {
+        list-style: none;
+        counter-reset: steps;
+        margin-top: 4px;
+      }
+
+      .steps li {
+        counter-increment: steps;
+        display: flex;
+        gap: 16px;
+        margin-bottom: 12px;
+        align-items: baseline;
+      }
+
+      .steps li::before {
+        content: counter(steps);
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--fg-dim);
+        min-width: 16px;
+        margin-top: 2px;
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid #1e1e1e;
+        margin: 48px 0;
+      }
+
+      .credit-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .credit-row span,
+      .credit-row a {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--fg-muted);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+      }
+
+      .credit-row a:hover {
+        color: var(--fg);
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 48px 20px 80px;
+          font-size: 17px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+        header {
+          flex-direction: column;
+          gap: 16px;
+          margin-bottom: 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="site-name">rm -rf bg</span>
+      <nav>
+        <a href="https://stratos.bookbusters.gr" target="_blank" rel="noopener"
+          >author</a
+        >
+        <a
+          href="https://www.npmjs.com/package/@imgly/background-removal"
+          target="_blank"
+          rel="noopener"
+          >package</a
+        >
+      </nav>
+    </header>
+
+    <h1>Remove backgrounds,<br />entirely on your machine.</h1>
+    <p class="tagline">A Figma plugin powered by @imgly/background-removal</p>
+
+    <section>
+      <h2>What it does</h2>
+      <p>
+        Select any layer with an image fill in Figma, run the plugin, and the
+        background is cut out and replaced with a transparent PNG — without ever
+        leaving your browser or sending your image to a server.
+      </p>
+      <p>
+        The result is written back into the same layer as a new image fill, so
+        your layout stays untouched.
+      </p>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>
+          The plugin reads the image bytes from your selected Figma layer.
+        </li>
+        <li>
+          An ONNX-based segmentation model runs entirely in the plugin's
+          <code>iframe</code> using WebAssembly — no data leaves your machine.
+        </li>
+        <li>
+          The model isolates the foreground subject and outputs a transparent
+          PNG.
+        </li>
+        <li>
+          The new image is written back into the layer's fills, replacing the
+          original.
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Performance</h2>
+      <p>
+        The first run downloads and caches the model weights (~40 MB).
+        Subsequent runs reuse the cache, so they're significantly faster.
+        Keeping the plugin window open between runs is the best way to get
+        near-instant results — the model stays resident in memory.
+      </p>
+    </section>
+
+    <section>
+      <h2>Under the hood</h2>
+      <p>
+        Background removal is handled entirely by
+        <a
+          href="https://www.npmjs.com/package/@imgly/background-removal"
+          target="_blank"
+          rel="noopener"
+          ><code>@imgly/background-removal</code></a
+        >, an open-source package by
+        <a href="https://img.ly" target="_blank" rel="noopener">IMG.LY</a>. It
+        runs the
+        <a
+          href="https://github.com/danielgatis/rembg"
+          target="_blank"
+          rel="noopener"
+          >RMBG</a
+        >
+        model via ONNX Runtime Web, with WebAssembly as the execution backend.
+        No GPU required.
+      </p>
+      <p>
+        The plugin shell is standard Figma Plugin API — a thin TypeScript host
+        that passes image bytes to the <code>iframe</code> UI and writes the
+        result back.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <div class="credit-row">
+      <span
+        >Made by
+        <a href="https://stratos.bookbusters.gr" target="_blank" rel="noopener"
+          >Stratos Ileris</a
+        ></span
+      >
+      <span
+        >Powered by
+        <a
+          href="https://www.npmjs.com/package/@imgly/background-removal"
+          target="_blank"
+          rel="noopener"
+          >@imgly/background-removal</a
+        ></span
+      >
+    </div>
+  </body>
+</html>
